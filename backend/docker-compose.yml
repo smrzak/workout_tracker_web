@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"  # Maps host port 27017 to container port 27017
+    volumes:
+      - mongo-data:/data/db  # Persist MongoDB data
+    environment:
+      - MONGO_INITDB_DATABASE=workout_tracker  # Optional: Sets the initial database
+
+volumes:
+  mongo-data:  # Named volume for MongoDB data persistence
