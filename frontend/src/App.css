@@ -1,28 +1,46 @@
 /* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
 .app-container {
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
+  width: 100vw;
+  height: 100vh;
   padding: 2vw;
   transition: background-color 0.3s, color 0.3s;
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* Allow scrolling if content overflows */
+  overflow-y: auto;
   box-sizing: border-box;
+  font-family: 'Inter', 'Roboto', sans-serif;
 }
 
 .app-container.dark {
-  background-color: #1d2833;
-  color: #ECF0F1;
+  background-color: #000000; /* Black background */
+  color: #FFFFFF; /* White text */
 }
 
 .app-container.light {
-  background-color: #ECF0F1;
-  color: #2C3E50;
+  background-color: #FFFFFF;
+  color: #1A202C;
+}
+
+.tabs-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #1A252F; /* Dark theme tab background */
+}
+
+.light .tabs-container {
+  background-color: #EDF2F7; /* Light theme tab background */
 }
 
 .tabs {
-  margin-bottom: 2vh;
-  width: 100%;
+  flex-grow: 1;
+}
+
+.theme-icon {
+  color: #38A169; /* Green for theme toggle */
+  margin-right: 20px; /* Margin from the right edge */
 }
 
 .tab-content {
@@ -30,16 +48,36 @@
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 100%;
-  flex-grow: 1; /* Allow content to expand */
+  flex-grow: 1;
   box-sizing: border-box;
 }
 
 .dark .tab-content {
-  background-color: #34495E;
+  background-color: #444; /* Grey background for content areas in dark mode */
 }
 
 .light .tab-content {
+  background-color: #F7FAFC;
+}
+
+.MuiInputLabel-outlined {
+  background-color: inherit;
+  padding: 0 4px;
+  color: #FFFFFF; /* Ensure labels are white in dark mode */
+}
+
+.light .MuiInputLabel-outlined {
+  color: #1A202C;
+}
+
+.dark .MuiOutlinedInput-root {
+  background-color: #2D3748; /* Dark grey for input fields */
+  color: #FFFFFF; /* White text for input values */
+}
+
+.light .MuiOutlinedInput-root {
   background-color: #FFFFFF;
+  color: #1A202C;
 }
 
 .form-container {
@@ -52,7 +90,7 @@
 }
 
 .form-control {
-  margin-bottom: 1vh; /* Extra spacing to prevent overlap */
+  margin-bottom: 1vh;
 }
 
 .history-list, .list {
@@ -74,11 +112,11 @@
 }
 
 .dark .history-item, .dark .list-item {
-  background-color: #3D566E;
+  background-color: #2D3748;
 }
 
 .light .history-item, .light .list-item {
-  background-color: #E8ECEF;
+  background-color: #EDF2F7;
 }
 
 .history-text {
@@ -87,82 +125,79 @@
 }
 
 .action-button {
-  background-color: #E74C3C;
-  color: white;
+  background-color: #1DA1F2;
+  color: #FFFFFF;
   margin-top: 1vh;
   padding: 0.5vw 1vw;
   font-size: calc(10px + 0.5vw);
 }
 
 .action-button:hover {
-  background-color: #C0392B;
+  background-color: #1A91DA;
 }
 
 .delete-button {
-  border-color: #E74C3C;
-  color: #E74C3C;
+  border-color: #E53E3E;
+  color: #E53E3E;
   padding: 0.3vw 0.8vw;
   font-size: calc(8px + 0.5vw);
 }
 
 .delete-button:hover {
-  background-color: #E74C3C;
-  color: white;
+  background-color: #E53E3E;
+  color: #FFFFFF;
 }
 
 .toggle-button {
-  border-color: #3498DB;
-  color: #3498DB;
+  border-color: #1DA1F2;
+  color: #1DA1F2;
   padding: 0.3vw 0.8vw;
   font-size: calc(8px + 0.5vw);
 }
 
 .toggle-button:hover {
-  background-color: #3498DB;
-  color: white;
+  background-color: #1DA1F2;
+  color: #FFFFFF;
 }
 
-.graph {
-  width: 100% !important;
-  height: 50vh !important;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.theme-toggle {
-  text-align: center;
-  margin-top: 2vh;
+.graph-container {
+  margin-top: 40px; /* Increased margin to push graph down */
   width: 100%;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #222; /* Dark grey background for graph in dark mode */
 }
 
-.theme-toggle button {
-  border-color: #2ECC71;
-  color: #2ECC71;
-  padding: 0.5vw 1vw;
-  font-size: calc(10px + 0.5vw);
+.light .graph-container {
+  background-color: #F7FAFC; /* Light grey for graph in light mode */
 }
 
-.theme-toggle button:hover {
-  background-color: #2ECC71;
-  color: white;
+.stats-section {
+  margin-bottom: 10px; /* Spacing between stats categories */
 }
 
 .snackbar-success {
-  background-color: #2ECC71 !important;
+  background-color: #38A169 !important;
 }
 
 .snackbar-error {
-  background-color: #E74C3C !important;
+  background-color: #E53E3E !important;
 }
 
-/* Media Queries for Mobile */
 @media (max-width: 600px) {
   .app-container {
     padding: 3vw;
   }
 
-  .tabs {
-    margin-bottom: 1vh;
+  .tabs-container {
+    flex-direction: row;
+  }
+
+  .theme-icon {
+    margin-right: 10px; /* Smaller margin on mobile */
   }
 
   .tab-content {
@@ -174,7 +209,7 @@
   }
 
   .form-control {
-    margin-bottom: 2vh; /* More spacing on mobile */
+    margin-bottom: 2vh;
   }
 
   .history-item, .list-item {
@@ -190,12 +225,8 @@
     font-size: calc(12px + 1vw);
   }
 
-  .theme-toggle button {
-    width: 100%;
-    padding: 2vw 3vw;
-  }
-
-  .graph {
-    height: 40vh !important;
+  .graph-container {
+    height: 40vh;
+    margin-top: 20px; /* Adjusted for mobile */
   }
 }
